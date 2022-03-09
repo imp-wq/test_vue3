@@ -26,20 +26,24 @@
     </div>
     <hr>
 
-    <button @click="NProgress.start">start</button>
+    <input type="text" v-model.number="NProgress_set">
+    <button @click="start">start</button>
+    <button @click="set">set</button>
     <button @click="done">done</button>
+
 </template>
 
 <script>
 import utils from "../utils";
 import NProgress from 'nprogress'
-import '../node_modules/nprogress/nprogress.css';
+import '../../node_modules/nprogress/nprogress.css'
 
 export default {
   data() {
     return {
       baseURL: "http://10.255.144.70/api/uc/",
       pageNum:0,
+      NProgress_set:0,
       userData: {
         loginAccount: "szjsc",
         loginPwd: "111111",
@@ -107,7 +111,15 @@ export default {
       this.msgList=res.data.list
       console.log(this.msgList)
     },
-    
+    start() {
+      NProgress.start()
+    },
+    set() {
+      NProgress.set(this.NProgress_set)
+    },
+    done() {
+      NProgress.done()
+    }
   },
 };
 </script>
