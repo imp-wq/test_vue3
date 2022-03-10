@@ -1,4 +1,5 @@
 <template>
+<div>
   <button @click="login">获取数据</button>
   <button @click="getUserInfo">获取用户信息</button>
   <table>
@@ -17,6 +18,7 @@
         </tr>
     </tbody>
   </table>
+
   <hr>
 
   <div>
@@ -30,7 +32,7 @@
     <button @click="start">start</button>
     <button @click="set">set</button>
     <button @click="done">done</button>
-
+</div>
 </template>
 
 <script>
@@ -125,8 +127,6 @@ export default {
 </script>
     
 <style scoped>
-
-
 table {
   border: 1px solid #000;
 }

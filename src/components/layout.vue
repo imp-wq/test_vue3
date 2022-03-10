@@ -12,7 +12,11 @@
       <el-container>
         <el-main>
           <!-- main区域 -->
-          <router-view></router-view>
+          <router-view v-slot="{ Component }">
+            <transition name="fade" mode="out-in">
+              <component :is="Component"></component>
+            </transition>
+          </router-view>
         </el-main>
         <el-footer>footer</el-footer>
       </el-container>
@@ -44,5 +48,21 @@
 
   .el-main {
     background-color: #e9eef3;
+  }
+
+  .fade-leave-active {
+    transition-property: all;
+    transition-duration: 1s;
+  }
+  .fade-enter-active {
+    transition-property: all;
+    transition-duration: 1s;
+  }
+  .fade-leave-to {
+    opacity: 0;
+    transform: translate(30px);
+  }
+  .fade-enter-from {
+    opacity: 0;
   }
 </style>

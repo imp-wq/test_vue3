@@ -1,9 +1,10 @@
 <template>
-  <el-menu default-active="1" :router="true">
-    <el-menu-item index="login">Layout组件</el-menu-item>
+  <el-menu default-active="" :router="true">
+    <!-- <el-menu-item index="login">Layout组件</el-menu-item> -->
     <el-menu-item index="search-form">SearchForm</el-menu-item>
-    <el-menu-item>1</el-menu-item>
-    <el-menu-item>1</el-menu-item>
+    <el-menu-item index="3">3</el-menu-item>
+    <el-menu-item index="4">4</el-menu-item>
+    <el-menu-item index="login">Layout组件</el-menu-item>
   </el-menu>
 </template>
 

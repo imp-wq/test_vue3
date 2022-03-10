@@ -10,6 +10,14 @@ const routes = [
   {
     path: '/search-form',
     component: () => import('../components/SearchForm.vue')
+  },
+  {
+    path: '/3',
+    component: () => import('../components/3.vue')
+  },
+  {
+    path: '/4',
+    component: () => import('../components/4.vue')
   }
 ]
 
