@@ -1,3 +1,5 @@
+@import '../node_modules/nprogress/nprogress.css';
+
 html,
 body {
   margin: 0;
@@ -7,4 +9,8 @@ body {
 
 #app {
   height: 100%;
+}
+
+li {
+  list-style-type: none;
 }

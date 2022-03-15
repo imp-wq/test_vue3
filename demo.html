@@ -5,12 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .father {
+        height: 200px;
+        width: 100px;
+        background-color: pink;
+        color: green;
+        position: relative;
+      }
+      .son {
+        /* height: inherit; */
+        background-color: aqua;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        right: 30px;
+        bottom: 30px;
+      }
+      .fixed {
+        position: fixed;
+        top: 50px;
+        left: 200px;
+        right: 200px;
+        bottom: 50px;
+        background-color: red;
+        width: 100px;
+      }
+    </style>
   </head>
 
   <body>
+    <button id="demo">demos</button>
     <h2>demo</h2>
+
+    <div class="father">
+      <div class="son"></div>
+    </div>
+
+    <div class="fixed"></div>
+
     <script>
       console.log(new Date().getTime())
+
+      document.querySelector('#demo').addEventListener('click', () => {
+        const res = {}
+        // 这样在data为空的时候，res.data.token被短路不会报错，类似callback&&callback()
+        console.log(res.data && res.data.token)
+        // res.data.toekn
+        console.log('demo')
+      })
     </script>
   </body>
 </html>

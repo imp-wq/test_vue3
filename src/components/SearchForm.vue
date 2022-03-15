@@ -1,53 +1,87 @@
 <template>
   <div class="SearchForm-container">
-    <el-form inline>
+    <el-form>
+      <!-- 两个选择框 -->
       <el-form-item label="社区网格">
         <el-cascader
-          :options="gridOptions"
-          :props="{ label: 'name', value: 'id' }"
-        ></el-cascader
-      ></el-form-item>
-      <el-form-item label="选择日期"> <el-cascader></el-cascader></el-form-item>
-      <el-form-item>3</el-form-item>
+          v-model="deptId"
+          :options="gridData"
+          :props="{ value: 'id', label: 'name' }"
+        />
+      </el-form-item>
+      <el-form-item label="选择日期">
+        <el-date-picker
+          type="date"
+          placeholder="请选择"
+          v-model="date"
+          value-format="YYYY-MM-DD"
+        />
+      </el-form-item>
     </el-form>
+    <!-- 两个按钮 -->
+    <div class="button">
+      <el-button type="primary" @click="emitSearch">查询</el-button>
+      <el-button @click="reset">重置</el-button>
+    </div>
   </div>
 </template>
 
 <script>
-  import utils from '../utils'
+  // import { gridData } from '../mock.js'
+  import DataAnalysis from './DataAnalysis.vue'
+  import moment from 'moment'
 
   export default {
+    components: { DataAnalysis },
+    props: ['gridData'],
+    emit: ['search'],
     data() {
       return {
-        gridOption: []
+        // gridOptions: gridData,
+        // 选择的日期和需要查询的id
+        date: moment().format('YYYY-MM-DD'),
+        deptId: '1545'
       }
     },
     methods: {
-      initGrid() {
-        utils.request.get(
-          'http://10.32.67.95:9982/cityie/system/fx/org/listTree',
-        )
+      reset() {
+        this.date = ''
+        this.deptId = []
+      },
+      emitSearch() {
+        this.$emit('search', { date: this.date, deptId: this.deptId })
       }
     }
   }
 </script>
 
-<style>
+<style scoped>
   .SearchForm-container {
     padding: 20px;
     background-color: white;
+    display: flex;
+    min-width: calc(1024px - 255px - 20px - 32px);
+    border-top: 1px solid blue;
   }
   .el-form {
-    display: flex;
-    align-items: center;
-    line-height: 52px;
-    overflow: hidden;
+    display: block;
     flex-wrap: wrap;
   }
   .el-form-item {
-    width: calc(50% - 15px - 15px);
-    padding-right: 15px;
-    padding-left: 0;
-    margin: 0;
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+  .button {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    justify-content: center;
+  }
+  .el-button {
+    width: 80px;
+  }
+
+  .el-cascader {
+    width: 306px;
   }
 </style>
