@@ -6,15 +6,21 @@
     <input type="text" v-model.number="orgId" />
     <button @click="resultList">查询疫情数据</button>
     <button>查询人数</button>
+    <br />
+    {{ test }}
+    <Test v-model="test" />
   </div>
 </template>
 
 <script>
   import utils from '../utils'
+  import Test from './test.vue'
 
   export default {
+    components: { Test },
     data() {
       return {
+        test: '',
         userInfo: {
           username: 'yqadmin',
           password: '12345678'

@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <el-breadcrumb separator="/">
+  <el-breadcrumb separator="/">
+    <transition-group tag="span" name="transition">
       <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
         {{ item.meta.title }}
       </el-breadcrumb-item>
-    </el-breadcrumb>
-  </div>
+    </transition-group>
+  </el-breadcrumb>
 </template>
 
 <script>
@@ -37,5 +37,19 @@
     top: 72px;
     width: 100%;
     z-index: 1;
+  }
+
+  .transition-enter-from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  .transition-enter-active,
+  .transition-leave-active {
+    transition: all 2s;
+    position: absolute;
+  }
+  .transition-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
   }
 </style>
