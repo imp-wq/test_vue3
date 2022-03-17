@@ -7,17 +7,22 @@
     <button @click="resultList">查询疫情数据</button>
     <button>查询人数</button>
     <br />
+    <CompositionAPI></CompositionAPI>
+    <br />
     {{ test }}
     <Test v-model="test" />
+    <super-map />
   </div>
 </template>
 
 <script>
   import utils from '../utils'
   import Test from './test.vue'
+  import CompositionAPI from './CompositionAPI.vue'
+  import SuperMap from './SuperMap.vue'
 
   export default {
-    components: { Test },
+    components: { Test, CompositionAPI, SuperMap },
     data() {
       return {
         test: '',
